@@ -4,7 +4,8 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [showScore, setShowScore] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [todos, setTodos] = useState([]);
 
   const questions = [
     {
@@ -12,7 +13,7 @@ const Quiz = () => {
       type: 'radio',
       options: ['Yes', 'No'],
       answer: 'Yes',
-      todo: 'You need to pay the tuition fee.',
+      todo: 'Pay the tuition fee since you are not Nordic student.',
     },
     {
       question:
@@ -20,7 +21,7 @@ const Quiz = () => {
       type: 'radio',
       options: ['Yes', 'No'],
       answer: 'Yes',
-      todo: 'You need to get a high school diploma ("Gymnasieexamen") or a foreign equivalent.',
+      todo: 'Get a high school diploma ("Gymnasieexamen") or a foreign equivalent.',
     },
     {
       question:
@@ -28,7 +29,7 @@ const Quiz = () => {
       type: 'radio',
       options: ['Yes', 'No'],
       answer: 'Yes',
-      todo: 'Yoy need to get the equivalent knowledge of the Swedish high school courses "Math 2" and "Programming 1".',
+      todo: 'Get the equivalent knowledge of the Swedish high school courses "Math 2" and "Programming 1".',
     },
     // Add more questions here
   ];
@@ -46,19 +47,40 @@ const Quiz = () => {
     ) {
       setScore(score + 1);
     }
+    if (
+      answers[currentQuestion] !== questions[currentQuestion].answer ||
+      JSON.stringify(answers[currentQuestion]) !==
+        JSON.stringify(questions[currentQuestion].answer)
+    ) {
+      setTodos([...todos, questions[currentQuestion].todo]);
+    }
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setShowScore(true);
+      setShowResult(true);
     }
   };
 
   return (
     <div>
-      {showScore ? (
+      {showResult ? (
         <div>
           <h2>Quiz Complete!</h2>
           <h3>Your Score: {score}</h3>
+          {todos.length === 0 ? (
+            <h3>You can apply this education without problems!</h3>
+          ) : (
+            <div>
+              <h3>You need to do the following:</h3>
+              {
+                <ul>
+                  {todos.map((todo, index) => (
+                    <li key={index}>{todo}</li>
+                  ))}
+                </ul>
+              }
+            </div>
+          )}
         </div>
       ) : (
         <div>
