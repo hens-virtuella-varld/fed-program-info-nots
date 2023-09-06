@@ -89,7 +89,7 @@ const Quiz = () => {
           {
             <ul>
               {questions[currentQuestion].options.map((option, index) => (
-                <li key={index}>
+                <li key={`${currentQuestion}-${index}`}>
                   <input
                     type='radio'
                     name={`question${currentQuestion}`}
