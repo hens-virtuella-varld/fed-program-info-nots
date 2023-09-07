@@ -1,0 +1,29 @@
+.header {
+  padding: 24px 32px;
+}
+
+.headerInfoWrapper {
+  padding-top: 16px;
+  display: flex;
+}
+
+.categoryWrapper {
+  display: flex;
+  padding-left: 16px;
+}
+
+.category {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: rgba(26, 26, 26, 1);
+}
+
+.dropDownArrow:hover {
+  animation-duration: 1s;
+  transform: rotate(180deg);
+}
+
+@media (max-width: 896px) {
+}
