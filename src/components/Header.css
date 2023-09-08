@@ -1,20 +1,20 @@
 .header {
-  padding: 24px 32px;
+  padding: 1.5rem 2rem;
 }
 
 .headerInfoWrapper {
-  padding-top: 16px;
+  padding-top: 1rem;
   display: flex;
 }
 
 .categoryWrapper {
   display: flex;
-  padding-left: 16px;
+  padding-left: 1rem;
 }
 
 .category {
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial';
-  font-size: 16px;
+  
+  font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;
   color: rgba(26, 26, 26, 1);
