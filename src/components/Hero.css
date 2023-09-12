@@ -65,8 +65,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.25rem;
-  /* justify-content: space-between;
-  align-content: space-between; */
 }
 
 .label {
