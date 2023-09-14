@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Summary from './components/Summary';
+import Main from './components/Main';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Hero />
       <Summary />
+      <Main />
       {/* <Quiz /> */}
     </div>
   );
