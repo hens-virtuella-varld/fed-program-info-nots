@@ -1,8 +1,9 @@
 import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Summary from './components/Summary';
 import Main from './components/Main';
+import Summary from './components/Summary';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <Summary />
       <Main />
+      <Footer />
       {/* <Quiz /> */}
     </div>
   );
