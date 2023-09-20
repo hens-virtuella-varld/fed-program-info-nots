@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Quiz.css';
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -62,50 +63,57 @@ const Quiz = () => {
   };
 
   return (
-    <div>
-      {showResult ? (
-        <div>
-          <h2>Quiz Complete!</h2>
-          <h3>Your Score: {score}</h3>
-          {todos.length === 0 ? (
-            <h3>You can apply this education without problems!</h3>
+    <div className='quiz'>
+      <div >
+        <div className='bg-img'>
+          {showResult ? (
+            <div>
+              <h2>Quiz Complete!</h2>
+              <h3>Your Score: {score}</h3>
+              {todos.length === 0 ? (
+                <h3>You can apply this education without problems!</h3>
+              ) : (
+                <div>
+                  <h3>You need to do the following:</h3>
+                  {
+                    <ul>
+                      {todos.map((todo, index) => (
+                        <li key={index}>{todo}</li>
+                      ))}
+                    </ul>
+                  }
+                </div>
+              )}
+            </div>
           ) : (
             <div>
-              <h3>You need to do the following:</h3>
+              <h2>Question {currentQuestion + 1}</h2>
+              <h3>{questions[currentQuestion].question}</h3>
               {
                 <ul>
-                  {todos.map((todo, index) => (
-                    <li key={index}>{todo}</li>
+                  {questions[currentQuestion].options.map((option, index) => (
+                    <li key={`${currentQuestion}-${index}`}>
+                      <input
+                        type='radio'
+                        name={`question-${currentQuestion}`}
+                        value={option}
+                        id={`question-${currentQuestion}-${option}`}
+                        onChange={() =>
+                          handleAnswerSelection(currentQuestion, option)
+                        }
+                      />
+                      <label for={`question-${currentQuestion}-${option}`}>
+                        {option}
+                      </label>
+                    </li>
                   ))}
                 </ul>
               }
+              <button onClick={handleNextQuestion}>Next Question</button>
             </div>
           )}
         </div>
-      ) : (
-        <div>
-          <h2>Question {currentQuestion + 1}</h2>
-          <h3>{questions[currentQuestion].question}</h3>
-          {
-            <ul>
-              {questions[currentQuestion].options.map((option, index) => (
-                <li key={`${currentQuestion}-${index}`}>
-                  <input
-                    type='radio'
-                    name={`question${currentQuestion}`}
-                    value={option}
-                    onChange={() =>
-                      handleAnswerSelection(currentQuestion, option)
-                    }
-                  />
-                  {option}
-                </li>
-              ))}
-            </ul>
-          }
-          <button onClick={handleNextQuestion}>Next Question</button>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
